@@ -5,15 +5,14 @@ const trackerSchema = new mongoose.Schema({
     type: String,
     required: [true, "must have a type"],
     enum: {
-      values: ["income", "expense"],
+      values: ["income", "expense", "goal"],
       message: "either income or expense only",
     },
   },
-  icon: {
+  icon: { 
     type: String,
-    required: [true, "must have an icon"],
   },
-  name: {
+  name: { 
     type: String,
     required: [true, "must have a name"],
   },
@@ -23,7 +22,6 @@ const trackerSchema = new mongoose.Schema({
   },
   date: {
     type: String,
-    required: [true, "income must have a date"],
   },
 });
 

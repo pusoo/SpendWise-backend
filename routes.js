@@ -1,46 +1,42 @@
-const express = require('express');
-const trackerController = require('./controllers');
+const express = require("express");
+const trackerController = require("./controllers");
 
-const router = express.Router()
-
-router
-    .route('/')
-    .get(trackerController.getAll)
-    .post(trackerController.createIncomeData)
+const router = express.Router();
 
 router
-    .route('/')
-    .get(trackerController.getAll)
-    .post(trackerController.createExpenseData)
+  .route("/")
+  .get(trackerController.getAll)
+  .post(trackerController.createIncomeData);
 
 router
-    .route('/income')
-    .get(trackerController.getAllIncome)
+  .route("/")
+  .get(trackerController.getAll)
+  .post(trackerController.createExpenseData);
+
+router.route("/income").get(trackerController.getAllIncome);
+
+router.route("/expense").get(trackerController.getAllExpense);
 
 router
-    .route('/expense')
-    .get(trackerController.getAllExpense)
-    
+  .route("/:id")
+  .get(trackerController.getDataById)
+  .patch(trackerController.updateIncomeData)
+  .delete(trackerController.deleteIncomeData);
 router
-    .route('/:id')
-    .get(trackerController.getDataById)
-    .patch(trackerController.updateIncomeData)
-    .delete(trackerController.deleteIncomeData)
+  .route("/:id")
+  .get(trackerController.getDataById)
+  .patch(trackerController.updateExpenseData)
+  .delete(trackerController.deleteExpenseData);
+
 router
-    .route('/:id')
-    .get(trackerController.getDataById)
-    .patch(trackerController.updateExpenseData)
-    .delete(trackerController.deleteExpenseData)
+  .route("/")
+  .get(trackerController.getAll)
+  .post(trackerController.createGoalData);
 
-// router
-//     .route('/')
-//     .get(trackerController.getAll)
-//     .post(trackerController.createGoalData)
-
-// router
-//     .route('/:id')
-//     .get(trackerController.getGoalDataById)
-//     .patch(trackerController.updateGoalData)
-//     .delete(trackerController.deleteGoalData)
+router
+  .route("/:id")
+  .get(trackerController.getDataById)
+  .patch(trackerController.updateGoalData)
+  .delete(trackerController.deleteGoalData);
 
 module.exports = router;
