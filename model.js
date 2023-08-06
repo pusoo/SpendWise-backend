@@ -23,6 +23,9 @@ const trackerSchema = new mongoose.Schema({
   date: {
     type: String,
   },
+  currentAmount: {
+    type: Number,
+  },
 });
 
 const Tracker = mongoose.model("Tracker", trackerSchema);
